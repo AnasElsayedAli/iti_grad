@@ -1,0 +1,23 @@
+<app-hero></app-hero>
+<section class="movies">  
+  <h2>Trending Now</h2>
+@if(isloaded){
+  <div class="movie-grid">
+    @for(movie of movies; track movie.id){
+    <div class="movie-card">
+      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" [alt]="movie.title">
+      <div class="movie-info">
+        <h3>{{movie.title}}</h3>
+        <h4>{{movie.release_date.slice(0,4)}}</h4>
+        <p>{{movie.overview.slice(0,150)}}...</p>
+        <button class="read-more">Know more</button>
+      </div>
+    </div>
+    }   
+</div>
+}
+@else{
+    <h1>not yet</h1>
+}
+
+</section>
