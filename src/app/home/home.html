@@ -1,0 +1,52 @@
+<app-hero></app-hero>
+
+<!-- 🔍 Search box -->
+
+<section class="movies">
+  <div class="search-container">
+  <form (ngSubmit)="onSearch()">
+    <input
+      type="text"
+      placeholder="Search movies..."
+      [(ngModel)]="query"
+      name="query"
+    />
+    <button type="submit">🔍</button>
+  </form>
+</div>
+  <h2>{{ query ? 'Search Results' : 'Trending Now' }}</h2>
+
+  @if(isloaded){
+  <div class="movie-grid">
+    @for(movie of movies; track movie.id){
+    <div class="movie-card">
+      <img
+        [src]="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path"
+        [alt]="movie.title"
+      />
+      <div class="movie-info">
+        <h3>{{movie.title}}</h3>
+        <h4>{{movie.release_date.slice(0,4)}}</h4>
+        <p>
+          {{
+            movie.overview
+              ? (movie.overview | slice:0:150) + '...'
+              : 'No description available.'
+          }}
+        </p>
+
+        <button
+          class="read-more"
+          [routerLink]="['/movie-details', movie.id]"
+        >
+          Know more
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+  } @else{
+  <h1>Loading...</h1>
+  }
+  
+</section>
