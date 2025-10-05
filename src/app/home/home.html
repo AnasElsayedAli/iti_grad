@@ -1,23 +1,26 @@
 <app-hero></app-hero>
-<section class="movies">  
+
+<section class="movies">
   <h2>Trending Now</h2>
-@if(isloaded){
+
+  @if (isloaded) {
   <div class="movie-grid">
-    @for(movie of movies; track movie.id){
+    @for (movie of movies; track movie.id) {
     <div class="movie-card">
-      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" [alt]="movie.title">
+      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" [alt]="movie.title" />
       <div class="movie-info">
-        <h3>{{movie.title}}</h3>
-        <h4>{{movie.release_date.slice(0,4)}}</h4>
-        <p>{{movie.overview.slice(0,150)}}...</p>
-        <button class="read-more">Know more</button>
+        <h3>{{ movie.title }}</h3>
+        <h4>{{ movie.release_date.slice(0, 4) }}</h4>
+        <p>{{ movie.overview.slice(0, 150) }}...</p>
+        <div class="movie-buttons">
+          <button class="read-more">Know more</button>
+          <button class="add-watchlist" (click)="addToWatchlist(movie)">Add to Watchlist</button>
+        </div>
       </div>
     </div>
-    }   
-</div>
-}
-@else{
-    <h1>not yet</h1>
-}
-
+    }
+  </div>
+  } @else {
+  <h1>not yet</h1>
+  }
 </section>

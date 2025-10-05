@@ -24,7 +24,7 @@
   background: #1a1a1a;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
@@ -37,6 +37,9 @@
 }
 
 .movie-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 1rem;
 }
 
@@ -60,7 +63,7 @@
 /* Hover Effect */
 .movie-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.8);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
 }
 
 .read-more {
@@ -80,4 +83,27 @@
 .read-more:hover {
   background: linear-gradient(135deg, #f6121d, #d40813);
   box-shadow: 0 4px 10px rgba(229, 9, 20, 0.4);
+}
+.add-watchlist {
+  cursor: pointer;
+  background: linear-gradient(135deg, #3388ff, #1d6fe0);
+  border: none;
+  padding: 0.5rem 0.75rem;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.add-watchlist:hover {
+  background: linear-gradient(135deg, #1d6fe0, #0a56c7);
+  box-shadow: 0 4px 10px rgba(51, 136, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.movie-buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 1rem;
 }

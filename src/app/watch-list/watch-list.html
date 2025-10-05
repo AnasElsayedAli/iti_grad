@@ -1,0 +1,27 @@
+<section class="watchlist-section">
+  <h2 class="watch-list-title">Your Watchlist</h2>
+
+  @if (isLoaded) { @if (movies.length > 0) {
+  <div class="movies-grid">
+    @for (movie of movies; track movie.id) {
+    <div class="movie-card">
+      <div class="poster">
+        <img [src]="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" [alt]="movie.title" />
+      </div>
+
+      <div class="details">
+        <h3>{{ movie.title }}</h3>
+        <p class="meta">
+          ⭐ {{ movie.vote_average.toFixed(1) }} | {{ movie.release_date.slice(0, 4) }}
+        </p>
+        <button class="remove-btn" (click)="removeFromWatchlist(movie.id)">Remove</button>
+      </div>
+    </div>
+    }
+  </div>
+  } @else {
+  <p class="empty">Your watchlist is empty.</p>
+  } } @else {
+  <p>Loading...</p>
+  }
+</section>
